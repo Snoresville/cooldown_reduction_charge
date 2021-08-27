@@ -38,7 +38,7 @@ function uniqueID() {
 	if ($("#Host")) {
 		for (let i of Game.GetAllPlayerIDs()) {
 			if ( Game.GetPlayerInfo(i) && Game.GetPlayerInfo(i).player_has_host_privileges) {
-				$("#Host").text = "HORNY: " + Players.GetPlayerName( i );
+				$("#Host").text = "HOST: " + Players.GetPlayerName( i );
 			}
 		}
 	} else {
@@ -338,6 +338,8 @@ GameEvents.Subscribe("kv_result", function(result) {
 		if (Game.IsInToolsMode()) {
 			$("#toolsModeGroup").visible = true;
 		}
+	} else {
+		$.Msg("toolsModeGroup not found")
 	}
 })();
 

@@ -11,7 +11,7 @@ local bonusabilities = {
 }
 local bonusmodifier = {
 	-- examplemodifier = {duration = 3}, -- this adds a duration to the modifier.
-	-- examplemodifier = {},  -- this makes it so that its permanent
+	cd_lua = {},  -- this makes it so that its permanent
 }
 local talents = {
 	[8] = "",	[7] = "",

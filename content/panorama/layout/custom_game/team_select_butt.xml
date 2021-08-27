@@ -10,7 +10,7 @@
 		<Label id="GAME_TITLE" class="GameTitle" text="#addon_game_name"/>
 		<Panel id="CustomSettingsID" class="CustomSettings">
 			<Label class="SettingsTitle" text="GAME SETTINGS"/>
-			<Label class="SettingsSubtitle" text="HORNY" id="Host"/>
+			<Label class="SettingsSubtitle" text="HOST" id="Host"/>
 			<!-- <Panel class="SplitThree"> -->
 			<Panel id="SettingsBody" class="SettingsBody" enabled="false" hittest="false">
 				<Panel class="SettingsGroup w-31">
@@ -166,9 +166,15 @@
 						<Label text="Cooldown" class="TextEntryLabel"/>
 					</Panel>
 				</Panel>
+
 				<Panel class="SettingsGroup w-31">
-					<ToggleButton id="AFFECT_CREEPS_TOO" class="SettingsItem" text="Ability Targets Creeps Too"
-									onactivate="onPanelChange('AFFECT_CREEPS_TOO')"/>
+					<Panel class="SettingsItem TextEntryFrame">
+						<TextEntry onfocus="onfocus('CHARGE_100')" oninputsubmit="onPanelChange('CHARGE_100')"
+									 onblur="onPanelChange('CHARGE_100')" id="CHARGE_100" class="SettingsItem"
+									 maxchars="5" unit="s"/>
+						<Label text="Time to Fully Charge" class="TextEntryLabel"/>
+					</Panel>
+					
 				</Panel>
 				
 				<!-- <Panel class="SettingsElement"> -->

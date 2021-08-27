@@ -22,8 +22,8 @@
 				$.Schedule(1.0, FixShopToolsUI)
 			}
 			else {
-				FindDotaHudElement("GridNewShopTab").style.width = "0px";
-				FindDotaHudElement("NewPlayerShopConsumables").style.height = "0px";
+				FindDotaHudElement("GridNewShopTab").style.visibility = "collapse";
+				FindDotaHudElement("NewPlayerShopConsumables").style.visibility = "collapse";
 			}
 		}
 		FixShopToolsUI();
@@ -40,8 +40,6 @@
 			FindDotaHudElement("TopBarRadiantScore").text = data.radiantKills;
 			FindDotaHudElement("TopBarDireScore").text = data.direKills;
 		});
-
-		
 	</script>
 	<Panel>
 		<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/courier_fix.xml" />
