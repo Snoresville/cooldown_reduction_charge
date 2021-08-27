@@ -27,6 +27,8 @@ function cd_lua:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST,
         MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE,
+        MODIFIER_EVENT_ON_MODIFIER_ADDED,
+        MODIFIER_EVENT_ON_DEATH,
 	}
 	return funcs
 end
@@ -37,6 +39,7 @@ function cd_lua:GetModifierPercentageCooldown()
 end
 
 function cd_lua:OnAbilityFullyCast(kv)
+    if kv.unit ~= self:GetParent() then return end
     self.lock = true
     local cooldown_reduction = (1 - self:GetParent():GetCooldownReduction()) * 100
     self.lock = false
@@ -46,3 +49,17 @@ function cd_lua:OnAbilityFullyCast(kv)
     self:SetStackCount(self:GetStackCount() - stacks_spent)
 end
 
+function cd_lua:OnModifierAdded(kv)
+    if kv.unit ~= self:GetParent() then return end
+    local modifier_table = self:GetParent():FindAllModifiers()
+
+    if modifier_table[#modifier_table]:GetName() == "modifier_abaddon_borrowed_time" then
+        self:OnAbilityFullyCast(kv)
+    end
+end
+
+function cd_lua:OnDeath(kv)
+    if kv.unit ~= self:GetParent() then return end
+
+    self:SetStackCount(0)
+end
